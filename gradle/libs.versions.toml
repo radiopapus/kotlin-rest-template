@@ -1,0 +1,58 @@
+[versions]
+kotlin = "1.8.20"
+spring = "3.0.6"
+springRetry = "2.0.2"
+flyway = "9.8.1"
+dotenv = "2.0.0"
+postgres = "42.6.0"
+dependencyManagement = "1.1.0"
+swagger = "2.2.0"
+testcontainers = "1.18.3"
+restAssured = "5.3.1"
+
+[plugins]
+dependencyManagement = { id = "io.spring.dependency-management", version.ref = "dependencyManagement" }
+springBoot = { id = "org.springframework.boot", version.ref = "spring" }
+
+kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlinJpa = { id = "org.jetbrains.kotlin.plugin.jpa", version.ref = "kotlin" }
+kotlinSpring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
+
+flyway = { id = "org.flywaydb.flyway", version.ref = "flyway" }
+dotenv = { id = "co.uzzu.dotenv.gradle", version.ref = "dotenv" }
+
+[libraries]
+springDataJpa = { group = "org.springframework.boot", name = "spring-boot-starter-data-jpa" }
+springSecurity = { group = "org.springframework.boot", name = "spring-boot-starter-security" }
+springWeb = { group = "org.springframework.boot", name = "spring-boot-starter-web" }
+springValidation = { group = "org.springframework.boot", name = "spring-boot-starter-validation" }
+springRetry = { group = "org.springframework.retry", name = "spring-retry", version.ref = "springRetry" }
+
+springTest = { group = "org.springframework.boot", name = "spring-boot-starter-test" }
+springSecurityTest = { group = "org.springframework.security", name = "spring-security-test" }
+restAssured = { group = "io.rest-assured", name = "rest-assured", version.ref = "restAssured" }
+jsonSchemaValidator = { group = "io.rest-assured", name = "json-schema-validator", version.ref = "restAssured" }
+mockMvc = { group = "io.rest-assured", name = "spring-mock-mvc", version.ref = "restAssured" }
+assuredKotlinExtension = { group = "io.rest-assured", name = "kotlin-extensions", version.ref = "restAssured" }
+
+testContainers = { group = "org.testcontainers", name = "testcontainers", version.ref = "testcontainers" }
+testContainersJunit = { group = "org.testcontainers", name = "junit-jupiter", version.ref = "testcontainers" }
+testContainersPostgres = { group = "org.testcontainers", name = "postgresql", version.ref = "testcontainers" }
+
+kotlinJackson = { group = "com.fasterxml.jackson.module", name = "jackson-module-kotlin" }
+kotlinReflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect" }
+
+postgres = { group = "org.postgresql", name = "postgresql", version.ref = "postgres" }
+
+swagger = { group = "org.springdoc", name = "springdoc-openapi-starter-webmvc-ui", version.ref = "swagger" }
+
+[bundles]
+starters = ["springDataJpa", "springSecurity", "springWeb", "springValidation", "springRetry"]
+db = ["postgres"]
+kotlinBase = ["kotlinJackson", "kotlinReflect"]
+restAssuredAll = ["restAssured", "jsonSchemaValidator", "mockMvc", "assuredKotlinExtension"]
+testContainersJUnitPostgres = ["testContainers", "testContainersJunit", "testContainersPostgres"]
+startersTest = ["springTest", "springSecurityTest"]
+
+
+
